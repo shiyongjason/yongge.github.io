@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sky的Hexo博客园</title>
+  
+  <subtitle>^ω^,年轻的季节里多提升自己</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-03-16T05:36:42.296Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Yong Ge</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Symbol</title>
+    <link href="http://yoursite.com/2019/03/13/Symbol/"/>
+    <id>http://yoursite.com/2019/03/13/Symbol/</id>
+    <published>2019-03-13T09:26:48.000Z</published>
+    <updated>2019-03-16T05:36:42.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Symbol&quot;&gt;&lt;a href=&quot;#Symbol&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Symbol" scheme="http://yoursite.com/tags/Symbol/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>data-deconstruction</title>
+    <link href="http://yoursite.com/2019/03/11/data-deconstruction/"/>
+    <id>http://yoursite.com/2019/03/11/data-deconstruction/</id>
+    <published>2019-03-11T03:39:27.000Z</published>
+    <updated>2019-03-11T09:02:38.081Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;ES6—数据解构&quot;&gt;&lt;a href=&quot;#ES6—数据解构&quot; class=&quot;headerlink&quot; title=&quot;ES6—数据解构&quot;&gt;&lt;/a&gt;ES6—数据解构&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;来同质化的代码  
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据解构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise</title>
+    <link href="http://yoursite.com/2018/09/08/Promise/"/>
+    <id>http://yoursite.com/2018/09/08/Promise/</id>
+    <published>2018-09-08T02:18:17.000Z</published>
+    <updated>2018-09-08T02:20:58.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、Promise标准中仅指定了Promise对象的then方法的行为，其它一切我们常见的方法/函数都并没有指定，包括catch，race，all等常用方法，甚至也没有指定该如何构造出一个Promise对象，另外then也没有一般实现中（Q,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Promise" scheme="http://yoursite.com/tags/Promise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue_$emit</title>
+    <link href="http://yoursite.com/2018/07/16/vue/"/>
+    <id>http://yoursite.com/2018/07/16/vue/</id>
+    <published>2018-07-16T05:46:42.000Z</published>
+    <updated>2018-07-17T01:23:37.023Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、父组件可以使用 props 把数据传给子组件。&lt;br&gt;2、子组件可以使用 $emit 触发父组件的自定义事件。&lt;/p&gt;
+&lt;p&gt;vm.$emit( event, arg ) //触发当前实例上的事件&lt;/p&gt;
+&lt;p&gt;vm.$on( event, fn
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vuex</title>
+    <link href="http://yoursite.com/2018/05/17/vuex/"/>
+    <id>http://yoursite.com/2018/05/17/vuex/</id>
+    <published>2018-05-17T02:17:08.000Z</published>
+    <updated>2018-05-18T01:41:12.964Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。&quot;&gt;&lt;a href=&quot;#Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。&quot; class=&quot;headerlink&quot; title=&quot;Vuex 是一个专为 Vue.js
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js 变量</title>
+    <link href="http://yoursite.com/2018/05/16/js-varuable/"/>
+    <id>http://yoursite.com/2018/05/16/js-varuable/</id>
+    <published>2018-05-16T01:34:58.000Z</published>
+    <updated>2018-05-16T07:37:26.824Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、作用域&quot;&gt;&lt;a href=&quot;#一、作用域&quot; class=&quot;headerlink&quot; title=&quot;一、作用域&quot;&gt;&lt;/a&gt;一、作用域&lt;/h1&gt;&lt;p&gt;在 JavaScript 中,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue-etc</title>
+    <link href="http://yoursite.com/2018/05/09/vue-etc/"/>
+    <id>http://yoursite.com/2018/05/09/vue-etc/</id>
+    <published>2018-05-09T09:16:59.000Z</published>
+    <updated>2018-05-10T07:37:43.154Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;概览&quot;&gt;&lt;a href=&quot;#概览&quot; class=&quot;headerlink&quot; title=&quot;概览&quot;&gt;&lt;/a&gt;概览&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;MVVM 是Model-View-ViewModel 的缩写，
+它是一种基于前端开发的架构模式，其核心是提供对View 和
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue-动态组件</title>
+    <link href="http://yoursite.com/2018/03/11/vue-components/"/>
+    <id>http://yoursite.com/2018/03/11/vue-components/</id>
+    <published>2018-03-11T00:48:48.000Z</published>
+    <updated>2018-05-14T08:29:52.571Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;组件（Component）是-Vue-js-最强大的功能之一，介绍一些更强大的扩展。&quot;&gt;&lt;a href=&quot;#组件（Component）是-Vue-js-最强大的功能之一，介绍一些更强大的扩展。&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>闭包  变量</title>
+    <link href="http://yoursite.com/2018/02/11/closure/"/>
+    <id>http://yoursite.com/2018/02/11/closure/</id>
+    <published>2018-02-11T06:56:18.000Z</published>
+    <updated>2018-05-09T08:25:34.701Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;##闭包就是functions that return function&lt;br&gt;(是输出而是返回一个函数)
+        
+      
+    
+    </summary>
+    
+    
+      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Array-排序</title>
+    <link href="http://yoursite.com/2018/02/10/Array-sort/"/>
+    <id>http://yoursite.com/2018/02/10/Array-sort/</id>
+    <published>2018-02-10T00:48:22.000Z</published>
+    <updated>2018-05-10T02:35:50.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;sort&quot;&gt;&lt;a href=&quot;#sort&quot; class=&quot;headerlink&quot; title=&quot;sort()&quot;&gt;&lt;/a&gt;sort()&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+      <category term="array" scheme="http://yoursite.com/tags/array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Array-去重</title>
+    <link href="http://yoursite.com/2018/01/09/Array-unique/"/>
+    <id>http://yoursite.com/2018/01/09/Array-unique/</id>
+    <published>2018-01-09T10:00:50.000Z</published>
+    <updated>2018-05-10T02:35:44.622Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="array" scheme="http://yoursite.com/tags/array/"/>
+    
+      <category term="Javascript" scheme="http://yoursite.com/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css3-新特性</title>
+    <link href="http://yoursite.com/2018/01/08/css3-new-feature/"/>
+    <id>http://yoursite.com/2018/01/08/css3-new-feature/</id>
+    <published>2018-01-08T06:15:36.000Z</published>
+    <updated>2018-05-09T06:50:22.963Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;CSS3的新特性大致分为以下六类&quot;&gt;&lt;a href=&quot;#CSS3的新特性大致分为以下六类&quot; class=&quot;headerlink&quot; title=&quot;CSS3的新特性大致分为以下六类&quot;&gt;&lt;/a&gt;CSS3的新特性大致分为以下六类&lt;/h3&gt;&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>New-start</title>
+    <link href="http://yoursite.com/2018/01/01/New-start/"/>
+    <id>http://yoursite.com/2018/01/01/New-start/</id>
+    <published>2018-01-01T04:20:51.000Z</published>
+    <updated>2018-05-09T06:01:17.032Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我可以记录我自己的想法，喜不喜欢则是你的自由&lt;/p&gt;
+&lt;h4 id=&quot;又是新的一年呢。&quot;&gt;&lt;a href=&quot;#又是新的一年呢。&quot; class=&quot;headerlink&quot; title=&quot;又是新的一年呢。&quot;&gt;&lt;/a&gt;又是新的一年呢。&lt;/h4&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello-world</title>
+    <link href="http://yoursite.com/2017/01/01/hello-world/"/>
+    <id>http://yoursite.com/2017/01/01/hello-world/</id>
+    <published>2017-01-01T04:20:51.000Z</published>
+    <updated>2018-05-09T06:10:18.434Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
