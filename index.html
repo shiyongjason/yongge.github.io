@@ -127,6 +127,83 @@
   
   <article class="index-post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/iframe-postMessage/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Yong Ge">
+        <meta itemprop="description" content="思考 生活">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Sky的Hexo博客园">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2019/06/22/iframe-postMessage/" itemprop="url">iframe-postMessage</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-06-22T15:20:07+08:00">2019-06-22 15:20:07</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-body" itemprop="articleBody">
+      
+      <h2 id="vue内嵌iframe并跨域通信"><a href="#vue内嵌iframe并跨域通信" class="headerlink" title="vue内嵌iframe并跨域通信"></a>vue内嵌iframe并跨域通信</h2><h4 id="近期做新老boss跳转页面-老boss使用sessionStorage存储数据-总结一下遇到的问题"><a href="#近期做新老boss跳转页面-老boss使用sessionStorage存储数据-总结一下遇到的问题" class="headerlink" title="近期做新老boss跳转页面,老boss使用sessionStorage存储数据,总结一下遇到的问题"></a>近期做新老boss跳转页面,老boss使用sessionStorage存储数据,总结一下遇到的问题</h4><p>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p>
+<h4 id="同源的判断规则："><a href="#同源的判断规则：" class="headerlink" title="同源的判断规则："></a>同源的判断规则：</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://www.test.com</span><br><span class="line">https://www.test.com （不同源，因为协议不同）</span><br><span class="line">http://my.test.com（不同源，因为主机名不同）</span><br><span class="line">http://www.test.com:8080（不同源，因为端口不同）</span><br></pre></td></tr></table></figure>
+<h4 id="在此项目原先只用document-cookie-没成功，使用了ifram跨域通信去解决，使用的技术是window-postMessage"><a href="#在此项目原先只用document-cookie-没成功，使用了ifram跨域通信去解决，使用的技术是window-postMessage" class="headerlink" title="在此项目原先只用document.cookie 没成功，使用了ifram跨域通信去解决，使用的技术是window.postMessage"></a>在此项目原先只用document.cookie 没成功，使用了ifram跨域通信去解决，使用的技术是window.postMessage</h4><p>参考文档： <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage</a></p>
+<blockquote>
+<p>1、先在vue引入iframe</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">   &lt;template&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"act-form"</span>&gt;</span><br><span class="line">        &lt;iframe :src=<span class="string">"src"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>template&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">        src: <span class="string">'你的src'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">```  </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&gt;2、操作iframe获取其对象 </span></span><br><span class="line"><span class="regexp">``` javascript</span></span><br><span class="line"><span class="regexp">mounted () &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 这里就拿到了iframe的对象</span></span><br><span class="line"><span class="regexp">    this.$refs.iframe</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 这里就拿到了iframe的window对象</span></span><br><span class="line"><span class="regexp">    this.$refs.iframe.contentWindow</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/iframe1.png"></p>
+<blockquote>
+<p>3、vue里面嵌入iframe开始向其传递数据</p>
+</blockquote>
+<hr>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**这里用到了<span class="selector-tag">postMessage</span>   写法 <span class="selector-tag">otherWindow</span><span class="selector-class">.postMessage</span>(<span class="selector-tag">message</span>, <span class="selector-tag">targetOrigin</span>, <span class="selector-attr">[transfer]</span>)**</span><br></pre></td></tr></table></figure>
+<p>[otherWindow] </p>
+<blockquote>
+<p>其他窗口的一个引用，比如iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames。</p>
+</blockquote>
+<p>[message]</p>
+<blockquote>
+<p>将要发送到其他 window的数据。它将会被结构化克隆算法序列化。这意味着你可以不受什么限制的将数据对象安全的传送给目标窗口而无需自己序列化</p>
+</blockquote>
+<p>[targetOrigin]  </p>
+<blockquote>
+<p>通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串<em>（表示无限制）或者一个URI。在发送消息的时候，如果目标窗口的协议、主机地址或端口这三者的任意一项不匹配targetOrigin提供的值，那么消息就不会被发送；只有三者完全匹配，消息才会被发送。这个机制用来控制消息可以发送到哪些窗口；例如，当用postMessage传送密码时，这个参数就显得尤为重要，必须保证它的值与这条包含密码的信息的预期接受者的origin属性完全一致，来防止密码被恶意的第三方截获。如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的targetOrigin，而不是</em>。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。</p>
+</blockquote>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    sendMessage (userData) &#123;</span><br><span class="line">        <span class="comment">// 外部vue向iframe内部传数据</span></span><br><span class="line">        <span class="keyword">this</span>.iframeWin.postMessage(&#123;</span><br><span class="line">           <span class="comment">// cmd: 'getFormJson',</span></span><br><span class="line">            params: userData</span><br><span class="line">        &#125;, <span class="string">'*'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里通过点击事件触发，向iframe发送信息，iframe内部通过如下去处理这条数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接受父页面发来的信息</span></span><br><span class="line">       <span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> data = event.data.params</span><br><span class="line">	sessionStorage.setItem(<span class="string">"user_data"</span>,<span class="built_in">JSON</span>.stringify(data.data));</span><br><span class="line">	sessionStorage.setItem(<span class="string">"listAuth_data"</span>,<span class="built_in">JSON</span>.stringify(data.data.listAuth));</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="/img/iframe2.png"><br>此时已经完全解决这些跨域的参数通信，注意的就是  *  有指定的域名最好指定 安全为上！</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/vue/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>vue</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/11/copyType/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Yong Ge">
@@ -795,7 +872,7 @@
     <main class="post-body" itemprop="articleBody">
       
       <h4 id="组件（Component）是-Vue-js-最强大的功能之一，介绍一些更强大的扩展。"><a href="#组件（Component）是-Vue-js-最强大的功能之一，介绍一些更强大的扩展。" class="headerlink" title="组件（Component）是 Vue.js 最强大的功能之一，介绍一些更强大的扩展。"></a>组件（Component）是 Vue.js 最强大的功能之一，介绍一些更强大的扩展。</h4><p>父组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"singer"</span>&gt;</span><br><span class="line">		&lt;list-view :data=<span class="string">"singers"</span> ref=<span class="string">"list"</span>&gt;&lt;/list-view&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">import ListView from 'base/</span>listview/listview<span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">components: &#123;</span></span><br><span class="line"><span class="string">	ListView</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"singer"</span>&gt;</span><br><span class="line">		&lt;list-view :data=<span class="string">"singers"</span> ref=<span class="string">"list"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">list-view</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">import ListView from 'base/</span>listview/listview<span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">components: &#123;</span></span><br><span class="line"><span class="string">	ListView</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="父组件向子组件通信"><a href="#父组件向子组件通信" class="headerlink" title="父组件向子组件通信"></a>父组件向子组件通信</h2><p>1.props<br> father.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;child :msg=&quot;message&quot;&gt;&lt;/child&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">import child from &apos;./child.vue&apos;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    components: &#123;</span><br><span class="line">        child</span><br><span class="line">    &#125;,</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            message: &apos;father message&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p> 子组件vue模板child.vue</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">        msg: &#123;</span><br><span class="line">            type: String,</span><br><span class="line">            required: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -816,68 +893,6 @@
         
         
         <a class="post-tag button" href="/tags/vue/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>vue</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/closure/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Yong Ge">
-        <meta itemprop="description" content="思考 生活">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Sky的Hexo博客园">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/02/11/closure/" itemprop="url">闭包  变量</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-02-11T14:56:18+08:00">2018-02-11 14:56:18</time></span>
-        </span>
-        
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-body" itemprop="articleBody">
-      
-      <p>##闭包就是functions that return function<br>(是输出而是返回一个函数) f()()<br>变量的作用域无非就是两种：全局变量和局部变量。</p>
-<pre><code>函数内部可以直接读取全局变量。
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var n = 1;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</span><br><span class="line">  	console.log(n)</span><br><span class="line">&#125;</span><br><span class="line">f1(); // 1</span><br></pre></td></tr></table></figure>
-<pre><code>在函数外部自然无法读取函数内的局部变量
-**函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量**
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</span><br><span class="line">　　　　var n=1;</span><br><span class="line">　　&#125;</span><br><span class="line">　	　alert(n); // error</span><br></pre></td></tr></table></figure>
-<h3 id="如何从外部读取局部变量？"><a href="#如何从外部读取局部变量？" class="headerlink" title="如何从外部读取局部变量？"></a>如何从外部读取局部变量？</h3><pre><code>函数的内部，再定义一个函数。
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</span><br><span class="line">　　　　var n=2;</span><br><span class="line">　　　　<span class="keyword">function</span> <span class="function"><span class="title">f2</span></span>()&#123;</span><br><span class="line">　　　　　　alert(n); // 2</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line">----</span><br><span class="line">　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</span><br><span class="line">　　　　var n=1;</span><br><span class="line">　　　　<span class="keyword">function</span> <span class="function"><span class="title">f2</span></span>()&#123;</span><br><span class="line">　　　　　　alert(n); </span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="built_in">return</span> f2;</span><br><span class="line">　　&#125;</span><br><span class="line">　　var result=f1();</span><br><span class="line">　　result(); // 1</span><br></pre></td></tr></table></figure>
-<p>函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1就是不可见的。<br>这就是Javascript语言特有的”链式作用域”结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。</p>
-<pre><code>@闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，
-另一个就是让这些变量的值始终保持在内存中
-</code></pre><h3 id="使用闭包的注意点"><a href="#使用闭包的注意点" class="headerlink" title="使用闭包的注意点"></a>使用闭包的注意点</h3><p>1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</p>
-<p>2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</p>
-
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        
-        
-        
-        <a class="post-tag button" href="/tags/javascript/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>javascript</a>
-        
-        <a class="post-tag button" href="/tags/闭包/" style="background: #a3bb54;" rel="tag"><i class="fas fa-tags"></i>闭包</a>
         
       </div>
       

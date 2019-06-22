@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-17T01:42:46.018Z</updated>
+  <updated>2019-06-22T07:20:37.575Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iframe-postMessage</title>
+    <link href="http://yoursite.com/2019/06/22/iframe-postMessage/"/>
+    <id>http://yoursite.com/2019/06/22/iframe-postMessage/</id>
+    <published>2019-06-22T07:20:07.000Z</published>
+    <updated>2019-06-22T07:20:37.575Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;vue内嵌iframe并跨域通信&quot;&gt;&lt;a href=&quot;#vue内嵌iframe并跨域通信&quot; class=&quot;headerlink&quot; title=&quot;vue内嵌iframe并跨域通信&quot;&gt;&lt;/a&gt;vue内嵌iframe并跨域通信&lt;/h2&gt;&lt;h4
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>copyType</title>
@@ -258,9 +282,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
       <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
