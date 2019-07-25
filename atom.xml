@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-22T07:20:37.575Z</updated>
+  <updated>2019-07-25T07:04:48.522Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuex</title>
+    <link href="http://yoursite.com/2019/07/23/vuex/"/>
+    <id>http://yoursite.com/2019/07/23/vuex/</id>
+    <published>2019-07-23T02:17:08.000Z</published>
+    <updated>2019-07-25T07:04:48.522Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vuex定义&quot;&gt;&lt;a href=&quot;#Vuex定义&quot; class=&quot;headerlink&quot; title=&quot;Vuex定义&quot;&gt;&lt;/a&gt;Vuex定义&lt;/h2&gt;&lt;p&gt;&lt;em&gt;是一个专为 Vue.js
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
+    
+  </entry>
   
   <entry>
     <title>iframe-postMessage</title>
@@ -160,32 +186,6 @@
     
     
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vuex</title>
-    <link href="http://yoursite.com/2018/05/17/vuex/"/>
-    <id>http://yoursite.com/2018/05/17/vuex/</id>
-    <published>2018-05-17T02:17:08.000Z</published>
-    <updated>2018-05-18T01:41:12.964Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。&quot;&gt;&lt;a href=&quot;#Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。&quot; class=&quot;headerlink&quot; title=&quot;Vuex 是一个专为 Vue.js
-        
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
-      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
     
   </entry>
   

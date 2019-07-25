@@ -127,6 +127,105 @@
   
   <article class="index-post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/vuex/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Yong Ge">
+        <meta itemprop="description" content="思考 生活">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Sky的Hexo博客园">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2019/07/23/vuex/" itemprop="url">vuex</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-07-23T10:17:08+08:00">2019-07-23 10:17:08</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-body" itemprop="articleBody">
+      
+      <h2 id="Vuex定义"><a href="#Vuex定义" class="headerlink" title="Vuex定义"></a>Vuex定义</h2><p><em>是一个专为 Vue.js 应用程序开发的状态管理模式。</em></p>
+<p>传参的方法对于多层嵌套的组件将会非常繁琐。<br>Vue的vuex和React的Redux 都统称为同一状态管理(全局状态)，在state中定义了一个数据之后，你可以在所在项目中的任何一个组件里进行获取、进行修改，并且你的修改可以得到全局的响应变更。</p>
+<p>把组件的共享状态抽取出来，以一个全局单例模式管理</p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/img/vuex9.png"></p>
+<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>先声明一个state变量，并赋值一个空对象给它，里面定义变量给初始属性值；然后再在实例化的Vuex.Store里面传入一个空对象，并把刚声明的变量state放里面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"><span class="comment">// todo </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="string">'corpId'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'loading'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>组件调用方式: <code>this.$store.state.corpId</code></p>
+<p>mapState 辅助函数 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">    computed: &#123;</span><br><span class="line">        ...mapState(&#123;</span><br><span class="line">            loading: <span class="function"><span class="params">state</span> =&gt;</span> state.loading,</span><br><span class="line">            cropID: <span class="function"><span class="params">state</span> =&gt;</span> state.corpId</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>传字符串参数 ‘cropID’ 等同于 `state =&gt; state.corpId</p>
+<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>//没用过</p>
+<h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation！！！mutations也是一个对象，这个对象里面可以放改变state的初始值的方法，具体的用法就是给里面的方法传入参数state或额外的参数,然后利用vue的双向数据驱动进行值的改变，同样的定义好之后也把这个mutations扔进Vuex.Store里面<br>mutation 改变state 数据</p>
+<p>index.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="string">'corpId'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'loading'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>mutations.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    funcName (state, payload) &#123;</span><br><span class="line">        state.count += payload.amount</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>payload：有效载荷，即记录有效信息的部分，接受的信息 数据 吧</p>
+<p><strong>目前项目 使用常量替代 Mutation 事件类型</strong></p>
+<p>把这些常量放在单独的文件中可以让你的项目合作者对整个 app 包含的 mutation 一目了然</p>
+<p>const.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个常量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> FUNC_NAME = <span class="string">'FUNC_NAME'</span></span><br></pre></td></tr></table></figure>
+<p>mutations.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; FUNC_NAME &#125; <span class="keyword">from</span> <span class="string">'./const'</span></span><br><span class="line">    mutations: &#123;</span><br><span class="line">        <span class="comment">// 我们可以使用 ES2015 风格的计算属性命名功能来使用一个常量作为函数名</span></span><br><span class="line">        [FUNC_NAME] (state) &#123;</span><br><span class="line">        <span class="comment">// mutate state</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>组件调用方式: </p>
+<p><code>this.$store.commit(&#39;funcName&#39;, value)</code></p>
+<p>value：对象或值等</p>
+<p>或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">methods:&#123;</span><br><span class="line">    <span class="comment">// 将 `this.funcname()` 映射为 `this.$store.commit('FUNC_NAME')`</span></span><br><span class="line">    ...mapMutations(&#123;</span><br><span class="line">      funcname: <span class="string">'FUNC_NAME'</span> </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 <code>this.funcname()</code> 映射为 <code>this.$store.commit(&#39;funcname&#39;)</code> 去调用mutations</p>
+<p>而 mutations 的方法也不是直接通过 this.$store.mutations.xxx(xx) 去调用的，而是通过主动触发的。</p>
+<p>可以打印 this.$store 查看 Store 的属性，可以发现， mutations 是以 _mutations 的私有属性形式存在的，因此并不能直接调用（不能是指不允许）。</p>
+<p><strong>一些约定或者是规范</strong></p>
+<p>1、mutation 中如果是修改对象则必须遵循 vue 的响应原则， 也就是全覆盖。?????<br>这里的对象包括了 array，如果修改 object array 一般都是通过 Object.assign({},obj1,obj2) 的形式或者 array 的重新赋值整个新的 array，不能直接修改属性。</p>
+<p>2、mutation 中必须是同步操作 (官网有个同步函数介绍)<br>mutation 中如果是异步方法，会导致在触发 mutation 的时候回调还没有触发，因此不知道什么时候去改变状态，对于状态的改变是无法追踪的。</p>
+<p>3、mutation 的名称一般建议使用常量代替字符串<br>这也是 FLUX 架构推荐的方式，不过多阐述其好处，坏处就是各种引入引出。 后期可以看看文档说明</p>
+<h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><p>Action 则是在 mutation 之前（可以这么理解）进行的操作，Action 最终是对 mutation 进行 commit，因此 Action 并不直接修改 state，因此 Action 中可以存在任何的异步操作。<br>同上mutation是同步操作。。。。</p>
+<p>index.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="string">'corpId'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'loading'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations,</span><br><span class="line">    actions</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>actions.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">    <span class="comment">// 正常写法</span></span><br><span class="line">    funcName (context, payload) &#123;</span><br><span class="line">        <span class="comment">// TODO action 去commit mutation 里面的方法 从而 改变 state</span></span><br><span class="line">        context.commit(<span class="string">'funcname'</span>)</span><br><span class="line">       <span class="built_in">console</span>.log(context)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 项目 解构写法</span></span><br><span class="line">    funcName (&#123; commit &#125;, payload) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(commit)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象</p>
+<p><img src="/img/2735606938.jpg">    </p>
+<p>组件调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// TODO 把this.funcName 映射 到 vuex funcName  = this.funcName</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    ...mapActions(&#123;</span><br><span class="line">        funcName: <span class="string">'funcName'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/1015170-20170704170517550-119345186.png"></p>
+<p>异步聊天 同步打电话<br>vuex 真正限制你的只有 mutation 必须是同步的这一点,在vue中，只有mutation才能正真改变VUEX stroe中的state<br>Action去commit一个mutation。它要指定去commit哪一个mutation，然后指定结束之后要做什么什么事情就要给出一个函数</p>
+<h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><p>Vuex 允许我们将 store 分割成模块（module）每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块</p>
+<p><img src="/img/mo.png"></p>
+<p>官方案例</p>
+<p>在组件里面</p>
+<p>store<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  state: &#123; ... &#125;,</span><br><span class="line">  mutations: &#123; ... &#125;,</span><br><span class="line">  actions: &#123; ... &#125;,</span><br><span class="line">  getters: &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在全局vuex<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> moduleA <span class="keyword">from</span> <span class="string">'@/views/moduleA/store/index.js'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="string">'corpId'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'loading'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations,</span><br><span class="line">    actions,</span><br><span class="line">    modules: &#123;</span><br><span class="line">        a: moduleA</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>模块的局部状态<br>mutation：<br>action:局部状态通过 context.state 暴露出来，根节点状态则为 context.rootState<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   这里的 `state` 对象是模块的局部状态</span></span><br><span class="line">mutations: &#123;</span><br><span class="line">    [SET_NEW_GOODS] (state, v) &#123;</span><br><span class="line">        state.newGoods = v</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">actions：&#123;</span><br><span class="line">    funcName (&#123; state, commit, rootState &#125;) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((state.count + rootState.count) % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">            commit(<span class="string">'increment'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/vue/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>vue</a>
+        
+        <a class="post-tag button" href="/tags/vuex/" style="background: #a3bb54;" rel="tag"><i class="fas fa-tags"></i>vuex</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/iframe-postMessage/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Yong Ge">
@@ -637,56 +736,6 @@
   
   <article class="index-post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/vuex/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Yong Ge">
-        <meta itemprop="description" content="思考 生活">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Sky的Hexo博客园">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/05/17/vuex/" itemprop="url">vuex</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-05-17T10:17:08+08:00">2018-05-17 10:17:08</time></span>
-        </span>
-        
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-body" itemprop="articleBody">
-      
-      <h3 id="Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。"><a href="#Vuex-是一个专为-Vue-js-应用程序开发的状态管理模式。" class="headerlink" title="Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。"></a>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。</h3><p>传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。对于问题二，我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。以上的这些模式非常脆弱，通常会导致无法维护的代码。</p>
-<h4 id="把组件的共享状态抽取出来，以一个全局单例模式管理"><a href="#把组件的共享状态抽取出来，以一个全局单例模式管理" class="headerlink" title="把组件的共享状态抽取出来，以一个全局单例模式管理"></a>把组件的共享状态抽取出来，以一个全局单例模式管理</h4>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        
-        
-        
-        <a class="post-tag button" href="/tags/vue/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>vue</a>
-        
-        <a class="post-tag button" href="/tags/vuex/" style="background: #a3bb54;" rel="tag"><i class="fas fa-tags"></i>vuex</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/js-varuable/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Yong Ge">
@@ -924,7 +973,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -955,7 +1004,7 @@
     
 <hr>
 <div class="social-link sidebar-item">
-  <div><i class="far fa-address-card"></i>社交链接</p></div>
+  <div><i class="far fa-address-card"></i>Social Links</p></div>
   <ul>
     
     <li><i class="fas fa-envelope"></i><a href="https://422703012@qq.com" target="_blank">E-Mail</a></li>
@@ -973,7 +1022,7 @@
     
 <hr>
 <div class="blogroll sidebar-item">
-  <div><i class="fas fa-link"></i>友情链接</div>
+  <div><i class="fas fa-link"></i>Blogroll</div>
   <ul>
     
     <li><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -1022,7 +1071,7 @@
           
         </div>
         <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>
