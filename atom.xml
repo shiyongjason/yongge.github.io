@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-15T02:08:07.003Z</updated>
+  <updated>2019-09-16T09:58:30.400Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vuex</title>
-    <link href="http://yoursite.com/2019/07/23/vuex/"/>
-    <id>http://yoursite.com/2019/07/23/vuex/</id>
-    <published>2019-07-23T02:17:08.000Z</published>
-    <updated>2019-08-15T02:08:07.003Z</updated>
+    <title>keep-alive</title>
+    <link href="http://yoursite.com/2019/09/16/keep-alive/"/>
+    <id>http://yoursite.com/2019/09/16/keep-alive/</id>
+    <published>2019-09-16T08:14:24.000Z</published>
+    <updated>2019-09-16T09:58:30.400Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,31 @@
       
         
         
-          &lt;h2 id=&quot;Vuex定义及写法&quot;&gt;&lt;a href=&quot;#Vuex定义及写法&quot; class=&quot;headerlink&quot; title=&quot;Vuex定义及写法&quot;&gt;&lt;/a&gt;Vuex定义及写法&lt;/h2&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vuex</title>
+    <link href="http://yoursite.com/2019/07/23/vuex/"/>
+    <id>http://yoursite.com/2019/07/23/vuex/</id>
+    <published>2019-07-23T02:17:08.000Z</published>
+    <updated>2019-08-18T07:19:20.821Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vuex概念及写法&quot;&gt;&lt;a href=&quot;#Vuex概念及写法&quot; class=&quot;headerlink&quot; title=&quot;Vuex概念及写法&quot;&gt;&lt;/a&gt;Vuex概念及写法&lt;/h2&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
         
       
     
