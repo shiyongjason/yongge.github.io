@@ -127,6 +127,75 @@
   
   <article class="index-post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/vue-etc/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Yong Ge">
+        <meta itemprop="description" content="思考 生活">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Sky的Hexo博客园">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2018/05/09/vue-etc/" itemprop="url">vue-etc</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-05-09T17:16:59+08:00">2018-05-09 17:16:59</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-body" itemprop="articleBody">
+      
+      <h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><pre><code>MVVM 是Model-View-ViewModel 的缩写，
+它是一种基于前端开发的架构模式，其核心是提供对View 和 ViewModel 的双向数据绑定，
+这使得ViewModel 的状态改变可以自动传递给 View，即所谓的数据双向绑定。
+</code></pre><p><img src="/img/1050920-20161207111940601-1823413171.png"></p>
+<h3 id="vue-生命周期"><a href="#vue-生命周期" class="headerlink" title="vue 生命周期"></a>vue 生命周期</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">     &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    </span><br><span class="line">  var app = new Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,</span><br><span class="line">      data: &#123;</span><br><span class="line">          message : <span class="string">"xuxiao is boy"</span> </span><br><span class="line">      &#125;,</span><br><span class="line">       beforeCreate: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">                console.group(<span class="string">'beforeCreate 创建前状态===============》'</span>);</span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span> , <span class="string">"el     : "</span> + this.<span class="variable">$el</span>); //undefined</span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); //undefined </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message)  </span><br><span class="line">        &#125;,</span><br><span class="line">        created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'created 创建完毕状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>); //undefined</span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); //已被初始化 </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); //已被初始化</span><br><span class="line">        &#125;,</span><br><span class="line">        beforeMount: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'beforeMount 挂载前状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + (this.<span class="variable">$el</span>)); //已被初始化</span><br><span class="line">            console.log(this.<span class="variable">$el</span>);</span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); //已被初始化  </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); //已被初始化  </span><br><span class="line">        &#125;,</span><br><span class="line">        mounted: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'mounted 挂载结束状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>); //已被初始化</span><br><span class="line">            console.log(this.<span class="variable">$el</span>);    </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); //已被初始化</span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); //已被初始化 </span><br><span class="line">        &#125;,</span><br><span class="line">        beforeUpdate: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'beforeUpdate 更新前状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>);</span><br><span class="line">            console.log(this.<span class="variable">$el</span>);   </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); </span><br><span class="line">        &#125;,</span><br><span class="line">        updated: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'updated 更新完成状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>);</span><br><span class="line">            console.log(this.<span class="variable">$el</span>); </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); </span><br><span class="line">        &#125;,</span><br><span class="line">        beforeDestroy: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'beforeDestroy 销毁前状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>);</span><br><span class="line">            console.log(this.<span class="variable">$el</span>);    </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message); </span><br><span class="line">        &#125;,</span><br><span class="line">        destroyed: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            console.group(<span class="string">'destroyed 销毁完成状态===============》'</span>);</span><br><span class="line">            console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"el     : "</span> + this.<span class="variable">$el</span>);</span><br><span class="line">            console.log(this.<span class="variable">$el</span>);  </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"data   : "</span> + this.<span class="variable">$data</span>); </span><br><span class="line">               console.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>,<span class="string">"message: "</span> + this.message)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>***
+    beforecreated：el 和 data 并未初始化 
+    created:完成了 data 数据的初始化，el没有
+    beforeMount：完成了 el 和 data 初始化 
+    mounted ：完成挂载
+    另外在标红处，我们能发现el还是 {{message}}，这里就是应用的 Virtual DOM（虚拟Dom）技术，先把坑占住了。
+    到后面mounted挂载的时候再把值渲染进去。
+</code></pre><div style="color:red;box-shadow:10px 10px 13px #0D2133;border-radius:6px;line-height:35px;margin-bottom:10px;overflow:hidden"><br>beforecreate : 举个栗子：可以在这加个loading事件<br>created ：在这结束loading，还做一些初始化，实现函数自执行<br>mounted ： 在这发起后端请求，拿回数据，配合路由钩子做一些事情<br>beforeDestroy： 你确认删除XX吗？ destroyed ：当前组件已被删除，清空相关内容</div>
+
+
+<p>1、什么是vue生命周期？<br>答： Vue 实例从创建到销毁的过程，就是生命周期。也就是从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。</p>
+<p>2、vue生命周期的作用是什么？<br>答：它的生命周期中有多个事件钩子，让我们在控制整个Vue实例的过程时更容易形成好的逻辑。</p>
+<p>3、vue生命周期总共有几个阶段？<br>答：它可以总共分为8个阶段：创建前/后, 载入前/后,更新前/后,销毁前/销毁后</p>
+<p>4、第一次页面加载会触发哪几个钩子？<br>答：第一次页面加载时会触发 beforeCreate, created, beforeMount, mounted 这几个钩子</p>
+<p>5、DOM 渲染在 哪个周期中就已经完成？<br>答：DOM 渲染在 mounted 中就已经完成了。</p>
+<p>6、简单描述每个周期具体适合哪些场景？<br>答：生命周期钩子的一些使用方法： beforecreate : 可以在这加个loading事件，在加载实例时触发 created : 初始化完成时的事件写在这里，<br>如在这结束loading事件，异步请求也适宜在这里调用 mounted : 挂载元素，获取到DOM节点 updated : 如果对数据统一处理，在这里写上相应函数 beforeDestroy :<br>可以做一个确认停止事件的确认框 nextTick : 更新数据后立即操作dom</p>
+<p>More info: <a href="https://segmentfault.com/a/1190000008771768?_ea=1739750" target="_blank" rel="noopener">参考</a></p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/vue/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>vue</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/vue-components/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Yong Ge">
@@ -539,7 +608,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
+      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -570,7 +639,7 @@
     
 <hr>
 <div class="social-link sidebar-item">
-  <div><i class="far fa-address-card"></i>Social Links</p></div>
+  <div><i class="far fa-address-card"></i>社交链接</p></div>
   <ul>
     
     <li><i class="fas fa-envelope"></i><a href="https://422703012@qq.com" target="_blank">E-Mail</a></li>
@@ -588,7 +657,7 @@
     
 <hr>
 <div class="blogroll sidebar-item">
-  <div><i class="fas fa-link"></i>Blogroll</div>
+  <div><i class="fas fa-link"></i>友情链接</div>
   <ul>
     
     <li><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -637,7 +706,7 @@
           
         </div>
         <div class="powered-by">
-          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>

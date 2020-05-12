@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Sky的Hexo博客园" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>图片水印生成 | Sky的Hexo博客园 - ^ω^,年轻的季节里多提升自己</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="default"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Sky的Hexo博客园</a></h1>
+        <h2 class="subtitle">^ω^,年轻的季节里多提升自己</h2>
+      </div>
+      <div class="logo">
+        <img src="/images/ARIA_logo.png" alt="logo">
+      </div>
+    </div>
+    
+<nav id="nav" class="nav">
+  <a id="nav-toggle" class="nav-toggle"><i class="fas fa-bars"></i></a>
+  <ul id="menu">
+    
+    <li><a href="/">首页</a></li>
+    
+    <li><a href="/archives/">归档</a></li>
+    
+    <li><a href="/categories/">分类</a></li>
+    
+    <li><a href="/tags/">标签</a></li>
+    
+    <li><a href="/jianli/">简历</a></li>
+    
+  </ul>
+</nav>
+
+
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<section id="post" class="post">
+  
+  <article class="post-container card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/图片水印生成/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Yong Ge">
+       <meta itemprop="description" content="思考 生活">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Sky的Hexo博客园">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+       <span class="">图片水印生成</span>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-05-12T09:24:30+08:00">2020-05-12 09:24:30</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-body" itemprop="articleBody">
+      <blockquote>
+<p>近期项目需要做一个 定位打卡，拍照加上水印的功能，项目是用的react+Ant mobile</p>
+</blockquote>
+<p>&emsp;&emsp;选用了  ImagePicker 图片选择器，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImagePicker</span><br><span class="line">    length=&#123;4&#125;</span><br><span class="line">    disableDelete=&#123;true&#125;</span><br><span class="line">    files=&#123;this.state.attachmentUrl&#125;</span><br><span class="line">    onChange=&#123;this.onChangeFiles&#125;</span><br><span class="line">    onImageClick=&#123;(index, fs) =&gt; this.openViewer(index, fs)&#125;</span><br><span class="line">    selectable=&#123;this.state.attachmentUrl.length &lt; 20&#125;</span><br><span class="line">    multiple=&#123;this.state.multiple&#125;</span><br><span class="line">    capture=&quot;camera&quot;  // 只支持 相机拍照</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在onChange 里面调用方法，就能上传图片显示了，这里不多说介绍，上传图片的原理都差不多。<br>接下来说下给图片加水印的操作，在激烈的碰撞中，发现可以通过用Canvas，给图片上水印(本次是通过后台接口生成的)，之后慢慢的预研了一波。</p>
+<p><strong>前端图片加水印原理很简单，主要分为下面几步：</strong></p>
+<ol>
+<li>将需要添加水印的图片绘制到 canvas 上</li>
+<li>将水印图片绘制到 canvas 上</li>
+<li>将 canvas 的内容导出为图片</li>
+</ol>
+<h3 id="前期学习"><a href="#前期学习" class="headerlink" title="前期学习"></a>前期学习</h3><p>&emsp;使用canvas在前端实现图片水印合成</p>
+<p>&emsp;&emsp;1.在底图上加上想要的水印，核心代码如下</p>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前 canvas 的上下文环境，用来操作在 canvas 上绘制内容</span></span><br><span class="line"><span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line"><span class="comment">// 向 canvas 上绘制图片</span></span><br><span class="line"><span class="comment">// image 为一个图片对象</span></span><br><span class="line"><span class="comment">// x 为绘制图片的横向起始位置，y 为绘制图片的纵向起始位置</span></span><br><span class="line"><span class="comment">// width 为要绘制在 canvas 上宽度， height 为高度</span></span><br><span class="line"><span class="comment">// 该方法最多可接受 9 个参数，从而实现剪裁的效果，但是与本篇内容无关，感兴趣的小伙伴可以搜索该方法</span></span><br><span class="line">ctx.drawImage(image, x, y, width, height)</span><br><span class="line"><span class="comment">// 将 canvas 上的内容导出为 base64 格式的字符串，导出后可以直接赋值给 Image 对象的 src 属性</span></span><br><span class="line"><span class="comment">// 第一个参数为导出的图片格式，可接受第二个参数（小于或等于 1 的数，表示导出图片的压缩比率）</span></span><br><span class="line">canvas.toDataURL(<span class="string">"image/png"</span>)</span><br><span class="line">context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);</span><br></pre></td></tr></table></figure>
+</code></pre><p><strong>drawImage接受参数示意</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>img</td>
+<td style="text-align:left">用来被绘制的图像、画布或视频</td>
+</tr>
+<tr>
+<td>sx</td>
+<td style="text-align:left">可选。img被绘制区域的起始左上x坐标。</td>
+</tr>
+<tr>
+<td>sy</td>
+<td style="text-align:left">可选。img被绘制区域的起始左上y坐标。</td>
+</tr>
+<tr>
+<td>swidth</td>
+<td style="text-align:left">可选。img被绘制区域的宽度（如果没有后面的width或height参数，则可以伸展或缩小图像）。</td>
+</tr>
+<tr>
+<td>sheight</td>
+<td style="text-align:left">可选。img被绘制区域的高度（如果没有后面的width或height参数，则可以伸展或缩小图像）。</td>
+</tr>
+<tr>
+<td>x</td>
+<td style="text-align:left">画布上放置img的起始x坐标。</td>
+</tr>
+<tr>
+<td>y</td>
+<td style="text-align:left">画布上放置img的起始y坐标。</td>
+</tr>
+<tr>
+<td>width</td>
+<td style="text-align:left">可选。画布上放置img提供的宽度（可能会有图片剪裁效果）。</td>
+</tr>
+<tr>
+<td>height</td>
+<td style="text-align:left">可选。画布上放置img提供的高度（可能会有图片剪裁效果）。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>步骤</p>
+</blockquote>
+<p>&emsp;1、本地图片转成Base64<br>&emsp;在onChange 上传图片 直接获取到的对象包含了base64格式的图片数据，如图：<br><img src="/img/shuiyin1.png"></p>
+<p>&emsp;2、使用H5 <code>FlieReader</code> 读取base64格式的图片数据，将图片数据赋值给image 对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const reader = new FileReader();</span><br><span class="line">       reader.readAsDataURL(files);</span><br><span class="line">       reader.onload = (e) =&gt; &#123;</span><br><span class="line">           const img = document.createElement(&apos;img&apos;);</span><br><span class="line">           img.src = reader.result;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;3、调用canvas元素画布上下文对象的drawImage方法即可实现将img内容绘制到画布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const canvas = document.createElement(&apos;canvas&apos;);</span><br><span class="line">  // 设置画布高宽</span><br><span class="line">  canvas.width = img.width</span><br><span class="line">  canvas.height = img.height</span><br><span class="line">  let ctx = canvas.getContext(&apos;2d&apos;)</span><br><span class="line">  ctx.drawImage(img, 0, 0)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>drawImage</strong>这个方法可以传入多个参数（楼上已经述说过了），以定义绘制的图像的范围，这里传入的0, 0定义从图像左上角开始绘制，后面可以继续传入两个参数来定义图像的绘制终点，不过这里整个图片都要绘制到canvas，所以采用默认值即可。注意点：要设置画布的高宽，到时候图片需要平铺到整个画布上，不加 的话 大图会被裁剪掉。</p>
+</blockquote>
+<p>&emsp;4、在画布上添加水印并借助canvas的<code>toDataURL()</code>方法把我们的canvas画布转换成base64无损PNG地址，这里就可以按照canvas的Api进行水印的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 设置填充字号和字体，样式</span><br><span class="line">   ctx.font = &quot;24px 宋体&quot;</span><br><span class="line">   ctx.fillStyle = &quot;#FFC82C&quot;</span><br><span class="line">   // 设置右对齐</span><br><span class="line">   ctx.textAlign = &apos;right&apos;</span><br><span class="line">   // 在指定位置绘制文字，这里指定距离右下角20坐标的地方</span><br><span class="line">   ctx.fillText(&apos;HOSJOY&apos;, canvas.width - 20, canvas.height - 20)</span><br><span class="line">   canvas.toDataURL(&quot;image/png&quot;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;5、Demo完整代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const reader = new FileReader();</span><br><span class="line">       reader.readAsDataURL(files);</span><br><span class="line">       reader.onload = (e) =&gt; &#123;</span><br><span class="line">           const img = document.createElement(&apos;img&apos;);</span><br><span class="line">           img.src = reader.result;</span><br><span class="line">           const canvas = document.createElement(&apos;canvas&apos;);</span><br><span class="line">           // 如何获取图片高度 宽度</span><br><span class="line"></span><br><span class="line">           var size = 100;</span><br><span class="line">           img.onload = async () =&gt; &#123;</span><br><span class="line">               console.log(22, img.width)</span><br><span class="line">               const ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">               canvas.width = img.width;</span><br><span class="line">               canvas.height = img.height;</span><br><span class="line">               ctx.drawImage(img, 0, 0);</span><br><span class="line">               // ctx.drawImage(img,  0, 0, size, size, 0,0, size, size); 图片水印</span><br><span class="line">               ctx.fillStyle = &apos;white&apos;;</span><br><span class="line">               ctx.textBaseline = &apos;middle&apos;;</span><br><span class="line">               ctx.font =&quot;24px 宋体&quot;</span><br><span class="line">               ctx.fillText(&apos;Hello HOSJOY&apos;, 20, 20);</span><br><span class="line">               // canvas.toBlob(resolve);</span><br><span class="line">               // this.setState(&#123;</span><br><span class="line">               //     attachmentUrl: this.state.attachmentUrl.concat(&#123;</span><br><span class="line">               //         url: canvas.toDataURL(&quot;image/png&quot;),  // 生成base64的图片地址</span><br><span class="line">               //     &#125;)</span><br><span class="line">               // &#125;)</span><br><span class="line">               const fileNew = canvas.toDataURL(&quot;image/png&quot;)</span><br><span class="line">              /这里执行后台上传接口</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;这样就完整地给图片添加了水印效果，下面看一下实际效果，最终结果：<br><img src="/img/shuiyin2.png"></p>
+<blockquote>
+<p>总结</p>
+<blockquote>
+<p>前端给一个图片做简单的水印，canvas提供的一些API其实很有用，前端利用canvas的drawImage()可以实现对图片进行压缩，不妨大家可以试试,既然已经看到了最后，就请你伸出有魔力的手指点个关注吧！谢谢啦</p>
+</blockquote>
+</blockquote>
+
+    </main>
+    <footer class="post-footer">
+      
+      
+      <div class="post-tags">
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/React-ant/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>React ant</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>太多的理由,太多的借口</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;">
+    
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+      <a href="/2019/09/16/keep-alive/" rel="next" title="keep-alive"><i class="fas fa-angle-left"></i><span class="nav-title">keep-alive</span></a>
+      
+    </div>
+    <div class="post-nav-prev post-nav-item">
+      
+    </div>
+  </div>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+</div>
+
+
+
+  
+</section>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/sidebar_background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Yong Ge">
+  
+  <h1 class="author-name">Yong Ge</h1>
+  <h2 class="author-description"> 思考 生活</h2>
+  <div class="site-count">
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+
+
+
+
+<hr>
+<div class="post-toc sidebar-item" id="toc-div">
+  <div><i class="fas fa-list-ol"></i>文章目录</div>
+  <div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前期学习"><span class="toc-text">前期学习</span></a></li></ol></div>
+</div>
+
+
+
+    
+    
+    
+<hr>
+<div class="social-link sidebar-item">
+  <div><i class="far fa-address-card"></i>社交链接</p></div>
+  <ul>
+    
+    <li><i class="fas fa-envelope"></i><a href="https://422703012@qq.com" target="_blank">E-Mail</a></li>
+    
+    <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+    
+    <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+    
+  </ul>
+</div>
+
+
+    
+    
+    
+<hr>
+<div class="blogroll sidebar-item">
+  <div><i class="fas fa-link"></i>友情链接</div>
+  <ul>
+    
+    <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+    
+    <li><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+    
+    <li><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+    
+  </ul>
+</div>
+
+
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <a id="back-to-top"><i class="fas fa-angle-double-up"></i></a>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Yong Ge</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        
+<div class="busuanzi">
+  <span id="busuanzi_container_site_pv"><i class="fas fa-eye"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

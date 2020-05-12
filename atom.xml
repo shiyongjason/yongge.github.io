@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-16T09:58:30.400Z</updated>
+  <updated>2020-05-12T02:10:34.380Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图片水印生成</title>
+    <link href="http://yoursite.com/2020/05/12/%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0%E7%94%9F%E6%88%90/"/>
+    <id>http://yoursite.com/2020/05/12/图片水印生成/</id>
+    <published>2020-05-12T01:24:30.000Z</published>
+    <updated>2020-05-12T02:10:34.380Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;近期项目需要做一个 定位打卡，拍照加上水印的功能，项目是用的react+Ant mobile&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;选用了  ImagePicker 图片选择器，代码如下&lt;/p&gt;
+&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="React ant" scheme="http://yoursite.com/tags/React-ant/"/>
+    
+  </entry>
+  
+  <entry>
     <title>keep-alive</title>
     <link href="http://yoursite.com/2019/09/16/keep-alive/"/>
     <id>http://yoursite.com/2019/09/16/keep-alive/</id>
     <published>2019-09-16T08:14:24.000Z</published>
-    <updated>2019-09-16T09:58:30.400Z</updated>
+    <updated>2020-05-12T01:37:05.082Z</updated>
     
     <summary type="html">
     

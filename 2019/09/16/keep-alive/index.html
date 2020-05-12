@@ -156,7 +156,35 @@
       </div>
     </header>
     <main class="post-body" itemprop="articleBody">
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>项目中我们时常会遇到一些保留状态数据，筛选数据的需求，解决方案有许多，条条大路通罗马，主要在vue项目中如何使用keep-alive<br>keep-alive是什么<br>keep-alive是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中；使用keep-alive包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。<br>能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。</p>
+<h3 id="1、keep-alive是一个内置组件"><a href="#1、keep-alive是一个内置组件" class="headerlink" title="1、keep-alive是一个内置组件"></a>1、keep-alive是一个内置组件</h3><p><img src="/img/clipboard.png"></p>
+<p>生命周期<br><strong>created</strong></p>
+<p>初始化两个对象分别缓存VNode(虚拟DOM)和VNode对应的键集合<br>拓展：所谓虚拟DOM，是一个用于表示真实 DOM 结构和属性的 JavaScript 对象，这个对象用于对比虚拟 DOM 和当前真实 DOM 的差异化，然后进行局部渲染从而实现性能上的优化。在Vue.js 中虚拟 DOM 的 JavaScript 对象就是 VNode。 （待学习）</p>
+<p><strong>destroyed</strong></p>
+<p>删除this.cache中缓存的VNode实例。我们留意到，这不是简单地将this.cache置为null，而是遍历调用pruneCacheEntry函数删除。<br><img src="/img/clipboard1.png"></p>
+<p><strong>mounted</strong><br>这个钩子中对include和exclude参数进行监听，然后实时地更新（删除）this.cache对象数据。<br>include  匹配 name=a 的组件去缓存<br>exclude  匹配 name= a 的组件 取反 不要缓存<br>pruneCache函数的核心也是去调用pruneCacheEntry<br><img src="/img/clipboard0.png"></p>
+<h3 id="功能核心："><a href="#功能核心：" class="headerlink" title="功能核心："></a>功能核心：</h3><p>Vue.js内部将DOM节点抽象成了一个个的VNode节点，keep-alive组件的缓存也是基于VNode节点的而不是直接存储DOM结构。它将满足条件（pruneCache与pruneCache）的组件在cache对象中缓存起来，在需要重新渲染的时候再将vnode节点从cache对象中取出并渲染。<br>相关资料学习<br><a href="https://www.jianshu.com/p/540f6f4b67bc" target="_blank" rel="noopener">https://www.jianshu.com/p/540f6f4b67bc</a><br><a href="https://www.jianshu.com/p/9523bb439950" target="_blank" rel="noopener">https://www.jianshu.com/p/9523bb439950</a></p>
+<p>举例一个项目场景<br>home 主页<br>keeplist 列表     从 列表 =》 详情 要缓存<br>keepdetail 详情<br>1、keepalive 基础用法<br>APP.VUE<br><img src="/img/clipboard2.png"></p>
+<p>keeplist.vue<br>// 导航离开该组件的对应路由时调用<br>APP.VUE<br><img src="/img/clipboard3.png"><br>第一次操作home–&gt; keeplist—&gt; keepdetail的时候是理想效果，但当第二次操作返回home后，进行home–&gt; keeplist–&gt; keepdetail–&gt; keeplist时，缓存数据还在。</p>
+<p>百度了下解决方案 destory<br>1、代码没有加入 destory<br>发现缓存的对象又不对了，从detail返回category时，保存是的第一次进入detail的分类情况<br>1为什么一直是第一次 keepalive 数据<br>都没有重新渲染 DOM  一直保留的是原来的 dom （使用vuetools可以看下），需要刷新页面就行<br>2、代码加入 desroty （他的场景是）<br>1：$destory()<br>销毁之后 keepalive 也失效<br>destory生命周期 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。。</p>
+<p>调用动态组件的$destory()不起作用，我发现JS堆随着节点数量的增加而增加。动态组件似乎在没有销毁dom的情况下创建了dom。<br>原因可以看下：<br><a href="https://github.com/vuejs/vue/issues/6509" target="_blank" rel="noopener">https://github.com/vuejs/vue/issues/6509</a></p>
+<p>又去找了下解决方案..<br>没尝试过 以前是操作方法是进入缓存页 reload一下<br>解决方案：根据vue-router提供的守卫可在路由中启用afterEach路由守卫，在afterEach中进行判断是否第一次进入，非第一次进入页面情况强制刷新一次category页面。 </p>
+<p>总结上述方案都不是最优的，<br>官方及本人实践的<br>动态增删缓存</p>
+<p>1、keep-alive 新加入了两个属性: include(包含的组件缓存生效) 与 exclude(排除的组件不缓存，优先级大于include) 。<br>include 和 exclude 属性允许组件有条件地缓存。二者都可以用逗号分隔字符串、正则表达式或一个数组来表示。 </p>
+<p>下面是官方提供的 javascript 代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 逗号分隔字符串，只有组件a与b被缓存。这样使用场景变得更有意义了 --&gt;</span><br><span class="line">&lt;keep-alive include=<span class="string">"a,b"</span>&gt;</span><br><span class="line">  &lt;component :is=<span class="string">"view"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/keep-alive&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 正则表达式 (需要使用 v-bind，符合匹配规则的都会被缓存) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;keep-alive :include="/</span>a|b/<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;component :is="</span>view<span class="string">"&gt;&lt;/component&gt;</span></span><br><span class="line"><span class="string">&lt;/keep-alive&gt;</span></span><br><span class="line"><span class="string">&lt;!-- Array (需要使用 v-bind，被包含的都会被缓存) --&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;keep-alive :include="</span>[<span class="string">'a'</span>, <span class="string">'b'</span>]<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;component :is="</span>view<span class="string">"&gt;&lt;/component&gt;</span></span><br><span class="line"><span class="string">&lt;/keep-alive&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的地方<br>使用include的时候，必须给所有路由管理起来的vue组件都设置name属性，不然，没有name属性的也会被缓存下来，这样就不好实现有条件的筛选<br>使用exclude的时候，也必须给所有路由管理起来的vue组件都设置name属性，不然，没有name属性的组件也会被排除在外<br>当同时使用include和exclude的时候，exclude的优先级会更高，include就不生效，比如：包含于排除同时匹配到了组件A，那组件A不会被缓存。<br>缓存了组件之后，再次进入组件不会触发beforeCreate、created 、beforeMount、 mounted，如果你想每次进入组件都做一些事情的话，你可以放在activated进入缓存组件的钩子中。<br>同理：离开缓存组件的时候，beforeDestroy和destroyed并不会触发，可以使用deactivated离开缓存组件的钩子来代替。</p>
+<p>我个人的理解<br>include 和 exclue 就像2个房间 要么你去 A房间，要么你去B房间，特殊情况。。。<br>缓存写法有很多，重点理解原理 ，核心在于include</p>
+<p>本次主要以include 为demo，详情的可以看我上次的Boss项目写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 一个include解决了，不需要多写一个标签，也不需要在路由元中添加keepAlive了 --&gt;</span><br><span class="line">&lt;keep-alive :include=<span class="string">"a"</span> :exclude=<span class="string">"b"</span> :max=<span class="string">"amount"</span>&gt;</span><br><span class="line">    &lt;router-view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>理解原理就行<br>要全局存储 数据 我们尽量考虑vuex  刷新时候回归到初始状态<br>数组和字符串都一样 </p>
+<p><img src="/img/clipboard4.png"><br><img src="/img/clipboard5.png"></p>
+<p>主要 先设置  include需要缓存的组件name   进入页面 添加缓存<br>beforeRouteEnter 一般判断从哪个页面进入时需要判断路由，用到了beforeRouteEnter方法。<br>beforeRouteLeave 不加 会导致缓存一直存在<br><img src="/img/clipboard6.png"></p>
+<p>beforeRouteEnter  beforeRouteLeave  所以要配合使用<br>当在这些组件之间切换的时候都会请求一些请求过的数据，每次请求都会导致重复渲染影响性能。这些数据可以存到缓存。此时使用keep-alive将组建包裹起来。但这样以上八种生命周期钩子将失效。<br>缓存就相当于 数据一直原先的  不会发生任何请求，所以要更新数据就需要用到keep-alive对应的生命周期函数，取而代之的时activate和deactivated<br>　　activate：是在被包裹组建被激活的状态下使用的生命周期钩子<br>　　deactivated：在被包裹组件停止使用时调用<br>被缓存的组件实例会为其设置keepAlive= true，而在初始化组件钩子函数中，这个可以看下源码分析得到结果</p>
+<p><img src="/img/clipboard7.png"><br>详解原理参考资料： <a href="https://www.jb51.net/article/160705.htm" target="_blank" rel="noopener">https://www.jb51.net/article/160705.htm</a></p>
+<p>keepalive 其他场景问题<br>场景描述：一个后台管理系统，一个列表页A路由配置需要缓存，另一个页面B里面有多个跳转到A路由的链接。<br>问题描述：首先访问/A?id=1页面，然后到B页面再点击访问A?id=2的页面，发现由于页面A设置了缓存，数据还是id=1的数据，并没有更新。<br>路由跳转情况：/B –&gt; /A?id=1 –&gt; /B –&gt; /A?id=2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive :include=&quot;cacheList&quot;&gt;</span><br><span class="line">    &lt;router-view :key=&quot;$route.fullPath&quot;&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure></p>
+<p>通过给router-view添加一个动态变化的参数，让Vue认为这个组件每一次都是一个新组件，从而重新刷新。<br>这个个人感觉是一个十分巧妙和优雅的方法，在B2b项目尝试了一下<br>参考资料：<a href="https://www.jianshu.com/p/9911c15faa10" target="_blank" rel="noopener">https://www.jianshu.com/p/9911c15faa10</a></p>
+
     </main>
     <footer class="post-footer">
       
@@ -176,7 +204,7 @@
   
 <div class="reward" id="reward">
   <p>太多的理由,太多的借口</p>
-  <button id="reward-button" class="button" disable="enable">Reward</button>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
   <div id="qr" class="qr" style="display: none;">
     
     
@@ -194,6 +222,8 @@
       
     </div>
     <div class="post-nav-prev post-nav-item">
+      
+      <a href="/2020/05/12/图片水印生成/" rel="prev" title="图片水印生成"><span class="nav-title">图片水印生成</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </div>
@@ -218,7 +248,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
+      <i class="fas fa-search"></i><input type="text" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -252,8 +282,8 @@
 
 <hr>
 <div class="post-toc sidebar-item" id="toc-div">
-  <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-  <div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li></ol></div>
+  <div><i class="fas fa-list-ol"></i>文章目录</div>
+  <div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、keep-alive是一个内置组件"><span class="toc-text">1、keep-alive是一个内置组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能核心："><span class="toc-text">功能核心：</span></a></li></ol></li></ol></div>
 </div>
 
 
@@ -263,7 +293,7 @@
     
 <hr>
 <div class="social-link sidebar-item">
-  <div><i class="far fa-address-card"></i>Social Links</p></div>
+  <div><i class="far fa-address-card"></i>社交链接</p></div>
   <ul>
     
     <li><i class="fas fa-envelope"></i><a href="https://422703012@qq.com" target="_blank">E-Mail</a></li>
@@ -281,7 +311,7 @@
     
 <hr>
 <div class="blogroll sidebar-item">
-  <div><i class="fas fa-link"></i>Blogroll</div>
+  <div><i class="fas fa-link"></i>友情链接</div>
   <ul>
     
     <li><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -330,7 +360,7 @@
           
         </div>
         <div class="powered-by">
-          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>
